@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Empresas {
 	
-	private String nombre;
+	private String nombreE;
 	private Date fechaCreacion;
 	
 	public String getNombre() {
-		return nombre;	
+		return nombreE;	
 	}
 			
-	public void setNombre(String nombre) {		
-		this.nombre = nombre;
+	public void setNombre(String nombreE) {		
+		this.nombreE = nombreE;
 	}
 			
 	public Date getfechaCreacion() {		
