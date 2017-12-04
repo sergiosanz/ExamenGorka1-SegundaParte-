@@ -7,6 +7,32 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="cargarListado" method="post">
+		<input type="submit" value="ver listado">
+	</form>
 
+	<table border="1">
+		<thead>
+			<tr>
+				<td>Nombre</td>
+				<td>Lanzamiento</td>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="juego" items="${juegos}">
+				<tr>
+					<td><c:out value="${juego.nombre}" /></td>
+					<td><c:out value="${juego.fechaLanzamiento}" /></td>
+					<td><a href="/delete?id=${juego.nombre}">borrar</a></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+
+	<select>
+		<c:forEach var="juego" items="${juegos}">
+			<option value="${juego.nombre}">${juego.nombre}</option>
+		</c:forEach>
+	</select>
 </body>
 </html>
