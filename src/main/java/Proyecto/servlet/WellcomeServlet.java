@@ -1,15 +1,22 @@
 package Proyecto.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Proyecto.assembler.UserAssembler;
+import Proyecto.assembler.ConsolasAssembler;
+import Proyecto.assembler.EmpresasAssembler;
+import Proyecto.assembler.VideojuegosAssembler;
 import Proyecto.connection.ConnectionManagerConsolas;
+import Proyecto.connection.ConnectionManagerEmpresas;
+import Proyecto.connection.ConnectionManagerVideojuegos;
 import Proyecto.connection.H2ConnectionConsolas;
+import Proyecto.connection.H2ConnectionEmpresa;
+import Proyecto.connection.H2ConnectionVideojuegos;
 import Proyecto.ConsolasExamen.*;
 
 public class WellcomeServlet extends HttpServlet{
@@ -18,8 +25,12 @@ public class WellcomeServlet extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	UserAssembler assembler = new UserAssembler();
-	ConnectionManagerConsolas manager = new H2ConnectionConsolas();
+	ConsolasAssembler consolaAssembler = new ConsolasAssembler();
+	EmpresasAssembler empresaAssembler = new EmpresasAssembler();
+	VideojuegosAssembler videojuegosAssembler = new VideojuegosAssembler();
+	ConnectionManagerConsolas managerConsolas = new H2ConnectionConsolas();
+	ConnectionManagerEmpresas managerEmpresas = new H2ConnectionEmpresa();
+	ConnectionManagerVideojuegos managerVideojuegos = new H2ConnectionVideojuegos();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,8 +43,12 @@ public class WellcomeServlet extends HttpServlet{
 	}//Metodo que nos permite obtener datos del servlet
 	
 	private void doAction(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		User user = assembler.createUserFromRequest(req);	
-		manager.insert(user);
+		Consolas consola = ConsolasAssembler.createConsolaFromRequest(req);	
+		Empresas empresa = EmpresasAssembler.createEmpresaFromRequest(req);
+		VideoJuegos videojuego = VideojuegosAssembler.createVideojuegoFromRequest(req);
+		managerConsolas.insert(consola);
+		managerEmpresas.insert(empresa);
+		managerVideojuegos.insert(videojuego);
 		
 		redirect(req,resp);
 	}//Este metodo nos permite realizar la accion, en este caso la de ejecutar el metodo redirect() para redirigirnos a una pagina.

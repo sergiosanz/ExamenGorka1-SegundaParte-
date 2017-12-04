@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Proyecto.connection.ConnectionManagerConsolas;
+import Proyecto.connection.ConnectionManagerVideojuegos;
+import Proyecto.connection.ConnectionManagerEmpresas;
 import Proyecto.connection.H2ConnectionConsolas;
+import Proyecto.connection.H2ConnectionEmpresa;
+import Proyecto.connection.H2ConnectionVideojuegos;
 import Proyecto.ConsolasExamen.*;
 
 public class ListadoServlet extends HttpServlet {
@@ -20,17 +24,17 @@ public class ListadoServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	ConnectionManagerConsolas managerConsolas = new H2ConnectionConsolas();
-	ConnectionManagerEmrpesas managerEmpresas = new H2ConnectionConsolas();
-	ConnectionManagerConsolas managerConsolas = new H2ConnectionConsolas();
+	ConnectionManagerEmpresas managerEmpresas = new H2ConnectionEmpresa();
+	ConnectionManagerVideojuegos managerVideojuegos = new H2ConnectionVideojuegos();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Consolas> listAllConsolas = managerConsolas.searchAll();
-		List<Empresas> listAllEmpresas= manager.searchAll();
-		List<VideoJuegos> listAllVideojuegos = manager.searchAll();
+		List<Empresas> listAllEmpresas= managerEmpresas.searchAll();
+		List<VideoJuegos> listAllVideojuegos = managerVideojuegos.searchAll();
 		req.setAttribute("listAllConsolas", listAllConsolas);
 		req.setAttribute("listAllEmrpesas", listAllEmpresas);
-		req.setAttribute("listAllConsolas", listAllConsolas);
+		req.setAttribute("listAllVideojuegos", listAllVideojuegos);
 		redirect(req,resp);
 	}
 	
