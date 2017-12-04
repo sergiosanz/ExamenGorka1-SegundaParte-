@@ -1,11 +1,9 @@
 package Proyecto.ConsolasExamen;
 
-import java.util.Date;
-
 public class Empresas {
 	
 	private String nombreE;
-	private Date fechaCreacion;
+	private String fechaCreacion;
 	
 	public String getNombre() {
 		return nombreE;	
@@ -15,12 +13,12 @@ public class Empresas {
 		this.nombreE = nombreE;
 	}
 			
-	public Date getfechaCreacion() {		
+	public String getfechaCreacion() {		
 		return fechaCreacion;		
 	}
 			
-	public void setFechaCreacion(Date fechaCreacion) {		
-		this.fechaCreacion = fechaCreacion;	
+	public void setFechaCreacion(String string) {		
+		this.fechaCreacion = string;	
 	}
 
 }

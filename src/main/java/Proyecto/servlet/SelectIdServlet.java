@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Proyecto.connection.ConnectionManagerConsolas;
-import Proyecto.connection.H2Connection;
+import Proyecto.connection.H2ConnectionConsolas;
 import Proyecto.ConsolasExamen.*;
 
 public class SelectIdServlet extends HttpServlet{
@@ -19,7 +19,7 @@ public class SelectIdServlet extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	ConnectionManagerConsolas manager = new H2Connection();
+	ConnectionManagerConsolas manager = new H2ConnectionConsolas();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

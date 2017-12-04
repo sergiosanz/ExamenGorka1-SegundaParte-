@@ -1,12 +1,10 @@
 package Proyecto.ConsolasExamen;
 
-import java.util.Date;
-
 public class VideoJuegos {
 	
 	private String titulo;
 	private String edadRecomendada;
-	private Date fechaLanzamiento;
+	private String fechaLanzamiento;
 	
 	public String getTitulo() {
 		return titulo;
@@ -20,10 +18,10 @@ public class VideoJuegos {
 	public void setEdadRecomendada(String edadRecomendada) {
 		this.edadRecomendada = edadRecomendada;
 	}
-	public Date getFechaLanzamiento() {
+	public String getFechaLanzamiento() {
 		return fechaLanzamiento;
 	}
-	public void setFechaLanzamiento(Date fechaLanzamiento) {
+	public void setFechaLanzamiento(String fechaLanzamiento) {
 		this.fechaLanzamiento = fechaLanzamiento;
 	}
 

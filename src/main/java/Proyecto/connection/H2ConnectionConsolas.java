@@ -1,6 +1,5 @@
 package Proyecto.connection;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,18 +10,18 @@ import java.util.List;
 import Proyecto.ConsolasExamen.*;
 
 
-public class H2Connection implements ConnectionManagerConsolas {
+public class H2ConnectionConsolas implements ConnectionManagerConsolas {
 
 private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;INIT=RUNSCRIPT FROM 'classpath:scripts/create.sql'";
 
-	public void insert(User userFormulario) {
+	public void insert(Consolas consolasFormulario) {
 
 	Connection conn = open(jdbcUrl);
 	PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("INSERT INTO USER (nombre, apellido)" + "VALUES (?, ?)");
-			preparedStatement.setString(1, userFormulario.getNombre());
-			preparedStatement.setString(2, userFormulario.getApellido());
+			preparedStatement = conn.prepareStatement("INSERT INTO CONSOLAS (nombre, emrpesa)" + "VALUES (?, ?)");
+			preparedStatement.setString(1, consolasFormulario.getNombre());
+			preparedStatement.setString(2, consolasFormulario.getEmpresa());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -33,20 +32,20 @@ private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;IN
 		close(conn);
 	}
 
-	public List<User> searchAll() {
+	public List<Consolas> searchAll() {
 		
-		List<User> listUsers= new ArrayList<User>();
+		List<Consolas> listConsolas= new ArrayList<Consolas>();
 			Connection conn = open(jdbcUrl);
 			ResultSet resultSet = null;
 			PreparedStatement prepareStatement = null;
 			try {
-				prepareStatement = conn.prepareStatement("SELECT * FROM USER");
+				prepareStatement = conn.prepareStatement("SELECT * FROM CONSOLAS");
 				resultSet = prepareStatement.executeQuery();
 					while(resultSet.next()){
-						User userInDatabase = new User();
-						userInDatabase.setNombre(resultSet.getString(1));
-						userInDatabase.setApellido(resultSet.getString(2));
-						listUsers.add(userInDatabase);
+						Consolas consolaInDatabase = new Consolas();
+						consolaInDatabase.setNombre(resultSet.getString(1));
+						consolaInDatabase.setEmpresa(resultSet.getString(2));
+						listConsolas.add(consolaInDatabase);
 					}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -56,22 +55,22 @@ private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;IN
 				close(prepareStatement);
 			}
 			close(conn);
-			return listUsers;
+			return listConsolas;
 		}
 	
-	public User selectByNombre(String nombre) {
+	public Consolas selectByNombre(String nombre) {
 
-		User user = new User();
+		Consolas consola = new Consolas();
 		Connection conn = open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM User WHERE nombre = ?");
+			preparedStatement = conn.prepareStatement("SELECT * FROM CONSOLAS WHERE nombre = ?");
 			preparedStatement.setString(1, nombre);
 			resultSet = preparedStatement.executeQuery();
 				while (resultSet.next()) {
-			user.setNombre(resultSet.getString("nombre"));
-			user.setApellido(resultSet.getString("apellido"));
+			consola.setNombre(resultSet.getString("nombre"));
+			consola.setEmpresa(resultSet.getString("empresa"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,7 +79,7 @@ private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;IN
 			close(preparedStatement);
 		}
 		close(conn);
-		return user;
+		return consola;
 	}
 
 
@@ -88,7 +87,7 @@ private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;IN
 		Connection conn = open(jdbcUrl);
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = conn.prepareStatement("DELETE FROM person WHERE nombre = ?");
+			preparedStatement = conn.prepareStatement("DELETE FROM CONSOLAS WHERE nombre = ?");
 			preparedStatement.setString(1, nombre);
 			preparedStatement.executeUpdate();
 		} catch (Exception e) {
@@ -138,5 +137,4 @@ private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;IN
 			throw new RuntimeException(e);
 		}
 	}
-
 }
