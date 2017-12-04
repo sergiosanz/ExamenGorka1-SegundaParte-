@@ -41,7 +41,7 @@ private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;IN
 			ResultSet resultSet = null;
 			PreparedStatement prepareStatement = null;
 			try {
-				prepareStatement = conn.prepareStatement("SELECT * FROM VIDEOJUEGOS");
+				prepareStatement = conn.prepareStatement("SELECT * FROM VIDEOJUEGOS ");
 				resultSet = prepareStatement.executeQuery();
 					while(resultSet.next()){
 						VideoJuegos videojuegoInDatabase = new VideoJuegos();

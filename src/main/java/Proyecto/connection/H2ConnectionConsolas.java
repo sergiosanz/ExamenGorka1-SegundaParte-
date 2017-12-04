@@ -39,7 +39,7 @@ private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test;IN
 			ResultSet resultSet = null;
 			PreparedStatement prepareStatement = null;
 			try {
-				prepareStatement = conn.prepareStatement("SELECT * FROM CONSOLAS");
+				prepareStatement = conn.prepareStatement("SELECT * FROM CONSOLAS ");
 				resultSet = prepareStatement.executeQuery();
 					while(resultSet.next()){
 						Consolas consolaInDatabase = new Consolas();
