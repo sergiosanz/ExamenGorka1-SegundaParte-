@@ -13,6 +13,5 @@ void insert(Consolas consolaFormulario);
 public List<Consolas> searchAll();	
 Consolas selectByNombre(String nombre);
 
-
 }
 

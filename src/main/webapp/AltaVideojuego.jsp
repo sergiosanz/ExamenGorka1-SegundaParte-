@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Alta Videojuegos</title>
 </head>
 <body>
-
+	<form action="welcome" method="post">
+		<span>nombre:</span> 
+		<input type="text" name="nombre"> <br/>
+		<span>fechaLanzamiento:</span> 
+		<input type="text" name="fechaLanzamiento"><br/>
+		<input type="submit">
+	</form>
 </body>
 </html>

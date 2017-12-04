@@ -13,5 +13,4 @@ void insert(VideoJuegos videojuegoFormulario);
 public List<VideoJuegos> searchAll();	
 VideoJuegos selectByTitulo(String titulo);
 
-
 }

@@ -4,16 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Alta Consola</title>
 </head>
 <body>
 	<form action="welcome" method="post">
-		<span>id:</span> 
-		<input type="text" name="id"><br/>
 		<span>nombre:</span> 
 		<input type="text" name="nombre"> <br/>
 		<span>nom_Empresa:</span> 
-		<input type="text" name="nom_Empresa"><br/>
+		<input type="text" name="empresa"><br/>
 		<input type="submit">
 	</form>
 </body>

@@ -13,5 +13,4 @@ void insert(Empresas empresaFormulario);
 public List<Empresas> searchAll();	
 Empresas selectByNombreE(String nombreE);
 
-
 }
